@@ -1,0 +1,28 @@
+@use 'sass:color';
+
+// Bảng màu THE.Base (option 1)
+$c-green:   #003d11;
+$c-orange:  #e9480d;
+$c-cream:   #f0ede6;
+$c-dark:    #0a1409;
+$c-white:   #ffffff;
+$c-gold:    $c-orange;
+$c-muted-dark: rgba(10, 20, 9, 0.55);
+$c-muted: rgba(255, 255, 255, 0.58);
+$c-dark-text: #1a2e1b;
+
+$ff-body: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+$ff-display: 'Barlow Condensed', system-ui, sans-serif;
+
+$z-loader: 100;
+$z-popup: 70;
+$z-drawer: 60;
+$z-header: 50;
+
+// Header (đồng bộ option 1)
+$header-h: 72px;
+$header-logo-w: 200px;
+$side-pad: min(5vw, 2.5rem);
+$ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$dur-m: 0.6s;
+$dur-s: 0.3s;

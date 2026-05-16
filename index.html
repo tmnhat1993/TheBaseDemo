@@ -7,7 +7,7 @@
   <link rel="icon" type="image/png" href="/TheBaseDemo/assets/images/the-base-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,11 +17,11 @@
         <svg class="loader__welcome-svg" viewBox="0 0 560 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <text class="loader__welcome-stroke" x="280" y="56" text-anchor="middle"
             fill="none" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"
-            font-family="'Be Vietnam Pro', system-ui, sans-serif" font-weight="600" font-size="38"
+            font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="38"
             letter-spacing="0.12em">Welcome to</text>
           <text class="loader__welcome-fill" x="280" y="56" text-anchor="middle"
             opacity="0"
-            font-family="'Be Vietnam Pro', system-ui, sans-serif" font-weight="600" font-size="38"
+            font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="38"
             letter-spacing="0.12em">Welcome to</text>
         </svg>
       </div>
@@ -34,12 +34,12 @@
   </div>
 
   <div id="app">
-    <header id="header" class="site-header" role="banner" data-header-theme="0">
-      <a href="/TheBaseDemo/" class="logo" aria-label="THE.Feine – Trang chủ">
+    <header id="header" class="site-header" role="banner">
+      <a href="#" class="logo" data-go-home aria-label="THE.Base – Trang chủ">
         <img
           class="logo__img"
-          src="./assets/images/the-feine-logo-white.png"
-          alt="THE.Feine"
+          src="./assets/images/the-base-logo.png"
+          alt="THE.Base"
           width="200"
           height="64"
           decoding="async">
@@ -102,7 +102,7 @@
              target="_blank" rel="noopener noreferrer" aria-label="Zalo">
             <svg viewBox="0 0 32 16" fill="currentColor" aria-hidden="true">
               <text x="0" y="14" font-size="15" font-weight="700"
-                    font-family="'Be Vietnam Pro',sans-serif">Za</text>
+                    font-family="'Source Sans 3',sans-serif">Za</text>
             </svg>
             <span>Zalo</span>
           </a>
@@ -126,8 +126,8 @@
         </div>
 
         <address class="drawer__contact">
-          <p>Số 101 đường Phùng Hưng, Phường Pleiku, Gia Lai</p>
-          <a href="tel:0902823263">0902 823 263</a>
+          <p>Số 101, đường Phùng Hưng, Phường Pleiku, Tỉnh Gia Lai, Việt Nam.</p>
+          <a href="tel:+84837196368">083 719 6368</a>
           <a href="mailto:the.basepleiku@gmail.com">the.basepleiku@gmail.com</a>
         </address>
       </div>
@@ -144,13 +144,14 @@
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
+        <div class="popup__body">
         <div class="popup__content">
           <h2 id="popup-title" class="popup__sr-title">Về THE.Base</h2>
           <div class="popup__logo">
             <img src="./assets/images/the-base-logo.png" alt="THE.Base" width="300" height="88" decoding="async">
           </div>
 
-          <p class="popup__tagline">COME FOR A SIP — STAY FOR THE VIBE</p>
+          <p class="popup__tagline popup__tagline--latin">COME FOR A SIP — STAY FOR THE VIBE</p>
 
           <p class="popup__text">
             THE.Base là nơi hội tụ của những trải nghiệm đặc biệt. Được thành lập
@@ -167,27 +168,113 @@
           <div class="popup__meta">
             <div class="popup__meta-item">
               <span class="popup__meta-label">Địa chỉ</span>
-              <span class="popup__meta-value">Số 101 đường Phùng Hưng, Phường Pleiku, Tỉnh Gia Lai</span>
+              <span class="popup__meta-value">Số 101, đường Phùng Hưng, Phường Pleiku, Tỉnh Gia Lai, Việt Nam.</span>
             </div>
             <div class="popup__meta-item">
               <span class="popup__meta-label">Điện thoại</span>
-              <a class="popup__meta-value popup__meta-link" href="tel:0902823263">0902 823 263</a>
+              <a class="popup__meta-value popup__meta-link" href="tel:+84837196368">083 719 6368</a>
             </div>
             <div class="popup__meta-item">
               <span class="popup__meta-label">Email</span>
               <a class="popup__meta-value popup__meta-link"
                  href="mailto:the.basepleiku@gmail.com">the.basepleiku@gmail.com</a>
             </div>
-            <div class="popup__meta-item">
-              <span class="popup__meta-label">Giờ mở cửa</span>
-              <span class="popup__meta-value">07:00 – 22:00 hàng ngày</span>
-            </div>
+          </div>
+        </div>
+          <div class="popup__map-wrap">
+            <iframe
+              class="popup__map"
+              title="THE.Base trên Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.664348965995!2d108.0091865!3d13.978573700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c1f0001605749%3A0x81901e412ced13cc!2sTHE.Feine!5e0!3m2!1sen!2s!4v1778938021910!5m2!1sen!2s"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
 
-    <main class="site-main">
+    <div id="popup-brand" class="popup"
+      role="dialog" aria-modal="true" aria-labelledby="popup-brand-title" aria-hidden="true">
+      <div class="popup__overlay" id="popup-brand-overlay"></div>
+      <div class="popup__panel">
+        <button type="button" class="popup__close" id="popup-brand-close" aria-label="Đóng">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="popup__body">
+        <div class="popup__content">
+          <h2 id="popup-brand-title" class="popup__sr-title">Chi tiết thương hiệu</h2>
+          <div class="popup__logo">
+            <a href="#" class="popup__logo-link" data-popup-go-home aria-label="Về trang chủ THE.Base">
+              <img src="./assets/images/the-feine-logo.png" alt="" width="300" height="88" decoding="async">
+            </a>
+          </div>
+          <div data-brand-text></div>
+          <div class="popup__meta" data-brand-meta></div>
+        </div>
+          <div class="popup__map-wrap">
+            <iframe
+              class="popup__map"
+              title="THE.Base trên Google Maps"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3871.664348965995!2d108.0091865!3d13.978573700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316c1f0001605749%3A0x81901e412ced13cc!2sTHE.Feine!5e0!3m2!1sen!2s!4v1778938021910!5m2!1sen!2s"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="site-main is-hub" id="site-main">
+      <section class="site-hub" id="site-hub" aria-label="Trang chủ THE.Base">
+        <div class="site-hub__inner">
+          <header class="site-hub__hero">
+            <img class="site-hub__logo" src="./assets/images/the-base-logo.png"
+              alt="THE.Base" width="280" height="88" decoding="async">
+            <p class="site-hub__intro">
+              THE.Base — Một mô hình kết hợp giữa café, homestay và pub, được tạo nên như một hệ
+              sinh thái trải nghiệm nơi con người có thể gặp gỡ, nghỉ ngơi, kết nối và tận hưởng
+              những khoảnh khắc đời thường theo cách nhẹ nhàng, tinh tế và đầy cảm hứng.
+            </p>
+          </header>
+
+          <div class="site-hub__services">
+            <button type="button" class="site-hub__card" data-enter-section="0"
+              aria-label="Vào THE.Feine — Không gian cà phê">
+              <span class="site-hub__card-media">
+                <img src="./assets/images/feine-1.jpg" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="site-hub__card-brand">
+                <img src="./assets/images/the-feine-logo.png" alt="" width="140" height="48" decoding="async">
+              </span>
+            </button>
+            <button type="button" class="site-hub__card" data-enter-section="1"
+              aria-label="Vào THE.Home — Lưu trú">
+              <span class="site-hub__card-media">
+                <img src="./assets/images/home-1.jpg" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="site-hub__card-brand">
+                <img src="./assets/images/the-home-logo.png" alt="" width="140" height="48" decoding="async">
+              </span>
+            </button>
+            <button type="button" class="site-hub__card" data-enter-section="2"
+              aria-label="Vào THE.Fizz — Pub &amp; cocktail">
+              <span class="site-hub__card-media">
+                <img src="./assets/images/fizz-1.jpg" alt="" loading="lazy" decoding="async">
+              </span>
+              <span class="site-hub__card-brand">
+                <img src="./assets/images/the-fizz-logo.png" alt="" width="140" height="48" decoding="async">
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="site-experience" id="site-experience" hidden aria-hidden="true">
       <section class="site-intro" aria-label="Giới thiệu">
         <article class="site-intro__pane" data-section-pane="0">
           <div class="elevator-nav elevator-nav--top" role="presentation">
@@ -212,8 +299,8 @@
               Đây là nhịp mở đầu cho hành trình THE.Base — nơi chất lượng ly cà phê được đặt ngang hàng với cảm giác an yên.
             </p>
           </div>
-          <button type="button" class="site-intro__cta" data-open-about
-            aria-haspopup="dialog" aria-controls="popup-about">
+          <button type="button" class="site-intro__cta" data-open-brand data-brand="0"
+            aria-haspopup="dialog" aria-controls="popup-brand">
             Khám phá ngay
           </button>
         </article>
@@ -252,8 +339,8 @@
               Gallery bên phải đồng hành cùng từng không gian để bạn cảm nhịp “ở nhà” rõ hơn.
             </p>
           </div>
-          <button type="button" class="site-intro__cta" data-open-about
-            aria-haspopup="dialog" aria-controls="popup-about">
+          <button type="button" class="site-intro__cta" data-open-brand data-brand="1"
+            aria-haspopup="dialog" aria-controls="popup-brand">
             Khám phá ngay
           </button>
         </article>
@@ -280,8 +367,8 @@
               nơi Pleiku hiện lên theo một nhịp khác: rộn ràng, tự do và đầy năng lượng sau hoàng hôn.
             </p>
           </div>
-          <button type="button" class="site-intro__cta" data-open-about
-            aria-haspopup="dialog" aria-controls="popup-about">
+          <button type="button" class="site-intro__cta" data-open-brand data-brand="2"
+            aria-haspopup="dialog" aria-controls="popup-brand">
             Khám phá ngay
           </button>
         </article>
@@ -328,6 +415,7 @@
           </div>
         </div>
       </section>
+      </div>
     </main>
   </div>
   <script type="importmap">

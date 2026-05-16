@@ -1,6 +1,9 @@
 @use 'sass:color' as sc;
 @use 'variables' as *;
 
+$popup-height: min(88vh, 700px);
+$popup-map-h: 360px;
+
 .popup {
   position: fixed;
   inset: 0;
@@ -26,21 +29,24 @@
 
   &__panel {
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: min(600px, 92vw);
-    max-height: min(90vh, 100%);
+    height: $popup-height;
+    max-height: $popup-height;
     margin: auto;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
     background: $c-cream;
-    padding: 4rem 3.5rem;
+    padding: 0;
     opacity: 0;
     flex-shrink: 0;
   }
 
   &__close {
     position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
     width: 38px;
     height: 38px;
     display: flex;
@@ -49,9 +55,9 @@
     margin: 0;
     padding: 0;
     border: 0;
-    background: transparent;
+    background: rgba($c-cream, 0.85);
     color: $c-dark-text;
-    opacity: 0.5;
+    opacity: 0.65;
     cursor: pointer;
     transition: opacity $dur-s ease;
     -webkit-tap-highlight-color: transparent;
@@ -64,6 +70,18 @@
       width: 20px;
       height: 20px;
     }
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding: 3.25rem 2rem 2rem;
   }
 
   &__content {
@@ -84,7 +102,7 @@
   }
 
   &__logo {
-    margin: 20px auto;
+    margin: 12px auto 16px;
     max-width: 100%;
 
     img {
@@ -93,6 +111,30 @@
       height: auto;
       margin-inline: auto;
     }
+  }
+
+  &__tagline--latin {
+    font-family: $ff-latin;
+  }
+
+  &__map-wrap {
+    width: 100%;
+    margin: 1.75rem 0 0;
+    text-align: left;
+  }
+
+  &__map {
+    display: block;
+    width: 100%;
+    height: $popup-map-h;
+    border: 0;
+    background: rgba($c-dark-text, 0.06);
+  }
+
+  &__logo-link {
+    display: inline-block;
+    line-height: 0;
+    text-decoration: none;
   }
 
   &__tagline {
@@ -155,5 +197,15 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .popup__body {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+
+  .popup__panel {
+    width: min(100%, 92vw);
   }
 }

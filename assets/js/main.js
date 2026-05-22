@@ -123,6 +123,7 @@ class SectionExperience {
     this.#bindWheel();
     this.#bindTouch();
     this.#bindElevator();
+    this.#initGalleryNav();
   }
 
   get onHub() {
@@ -426,6 +427,55 @@ class SectionExperience {
     });
   }
 
+  #getGallerySlideCount(stack) {
+    const track = stack?.querySelector('[data-gallery-track]');
+    if (!track) return 0;
+    return track.querySelectorAll('.site-gallery__slide').length;
+  }
+
+  #createGalleryArrow(kind, label) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = `site-gallery__arrow site-gallery__arrow--${kind}`;
+    btn.setAttribute('aria-label', label);
+    btn.innerHTML =
+      kind === 'prev'
+        ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>'
+        : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+    return btn;
+  }
+
+  #setGalleryNavDisabled(stack, disabled) {
+    stack?.querySelectorAll('.site-gallery__arrow').forEach((btn) => {
+      btn.disabled = disabled;
+    });
+  }
+
+  #initGalleryNav() {
+    this.stacks.forEach((stack, stackIndex) => {
+      if (this.#getGallerySlideCount(stack) < 2) return;
+
+      const nav = document.createElement('div');
+      nav.className = 'site-gallery__nav';
+      nav.setAttribute('role', 'group');
+      nav.setAttribute('aria-label', 'Điều hướng hình ảnh');
+
+      const prevBtn = this.#createGalleryArrow('prev', 'Ảnh trước');
+      const nextBtn = this.#createGalleryArrow('next', 'Ảnh sau');
+      nav.append(prevBtn, nextBtn);
+      stack.appendChild(nav);
+
+      const onNav = (delta) => {
+        if (this.#onHub || this.#index !== stackIndex || this.#gallerySlideBusy) return;
+        this.#goGallerySlide(delta);
+        this.#restartGalleryTimer();
+      };
+
+      prevBtn.addEventListener('click', () => onNav(-1));
+      nextBtn.addEventListener('click', () => onNav(1));
+    });
+  }
+
   #setGallerySlideStates(stack, activeIndex) {
     const track = stack?.querySelector('[data-gallery-track]');
     if (!track) return;
@@ -451,7 +501,7 @@ class SectionExperience {
     this.#setGallerySlideStates(stack, 0);
   }
 
-  #advanceGallerySlide() {
+  #goGallerySlide(delta) {
     if (this.#gallerySlideBusy || this.#onHub) return;
 
     const stack = this.stacks[this.#index];
@@ -463,13 +513,19 @@ class SectionExperience {
     if (count < 2) return;
 
     const current = Number(track.dataset.slideIndex || 0);
-    const next = (current + 1) % count;
+    const next = (current + delta + count) % count;
+    if (next === current) return;
 
+    this.#transitionGallerySlides(stack, track, slides, current, next);
+  }
+
+  #transitionGallerySlides(stack, track, slides, current, next) {
     const outgoing = slides[current];
     const incoming = slides[next];
     if (!outgoing || !incoming) return;
 
     this.#gallerySlideBusy = true;
+    this.#setGalleryNavDisabled(stack, true);
     track.dataset.slideIndex = String(next);
 
     gsap.set(incoming, { zIndex: 4 });
@@ -479,6 +535,7 @@ class SectionExperience {
       defaults: { ease: 'power2.out' },
       onComplete: () => {
         this.#gallerySlideBusy = false;
+        this.#setGalleryNavDisabled(stack, false);
         gsap.set(outgoing, { autoAlpha: 0, scale: 1, zIndex: 1 });
         gsap.set(incoming, { zIndex: 2 });
         slides.forEach((el, j) => {
@@ -495,8 +552,17 @@ class SectionExperience {
       );
   }
 
+  #advanceGallerySlide() {
+    this.#goGallerySlide(1);
+  }
+
   #restartGalleryTimer() {
     this.#stopGalleryTimer();
+    if (this.#onHub) return;
+
+    const stack = this.stacks[this.#index];
+    if (this.#getGallerySlideCount(stack) < 2) return;
+
     this.#galleryTimer = window.setInterval(() => {
       this.#advanceGallerySlide();
     }, GALLERY_SLIDE_INTERVAL_MS);

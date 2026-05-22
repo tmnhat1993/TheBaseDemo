@@ -290,6 +290,64 @@ body {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, transparent 50%);
 }
 
+.site-gallery__nav {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(0.65rem, 2vw, 1.25rem);
+  pointer-events: none;
+}
+
+.site-gallery__arrow {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid $c-green;
+  border-radius: 50%;
+  background: rgba($c-cream, 0.9);
+  color: $c-green;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background $dur-s ease,
+    border-color $dur-s ease,
+    transform $dur-s ease,
+    opacity $dur-s ease;
+
+  svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    display: block;
+  }
+
+  &:hover:not(:disabled) {
+    background: $c-cream;
+    border-color: $c-green;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $c-green;
+    outline-offset: 3px;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+
+  &:disabled {
+    opacity: 0.38;
+    cursor: not-allowed;
+  }
+}
+
 // —— Thang máy: điều hướng giữa các tầng (option 2)
 @keyframes elevator-nudge-up {
   0%,
@@ -492,6 +550,20 @@ body {
 
   .site-gallery--fizz .site-gallery__slide::after {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.58) 0%, transparent 50%);
+  }
+
+  .site-gallery__nav {
+    padding: 0 0.5rem;
+  }
+
+  .site-gallery__arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
   }
 
   .elevator-nav--top {

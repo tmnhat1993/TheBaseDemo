@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { dur, durMs } from './motion.js';
 
 const MOBILE_DRAWER_MQ = '(max-width: 768px)';
 
@@ -85,20 +86,20 @@ export function initDrawerMenu({ onGoSection } = {}) {
     if (mobile) {
       tl.to(panel, {
         y:        '-100%',
-        duration: 1.05,
+        duration: dur(1.05),
         ease:     'power3.inOut',
       }, 0);
     } else {
       tl.to(panel, {
         x:        '100%',
-        duration: 1.125,
+        duration: dur(1.125),
         ease:     'power3.inOut',
       }, 0);
     }
 
     tl.to(overlay, {
       opacity:  0,
-      duration: 0.6,
+      duration: dur(0.6),
       ease:     'power3.in',
     }, 0);
   };
@@ -138,20 +139,20 @@ export function initDrawerMenu({ onGoSection } = {}) {
     tl = gsap.timeline()
       .to(overlay, {
         opacity:  1,
-        duration: 0.675,
+        duration: dur(0.675),
         ease:     'power3.out',
       }, 0);
 
     if (mobile) {
       tl.to(panel, {
         y:        0,
-        duration: 1.2,
+        duration: dur(1.2),
         ease:     'power4.out',
       }, 0);
     } else {
       tl.to(panel, {
         x:        '0%',
-        duration: 1.275,
+        duration: dur(1.275),
         ease:     'power4.out',
       }, 0);
     }
@@ -159,18 +160,18 @@ export function initDrawerMenu({ onGoSection } = {}) {
     tl.to(items, {
       x:        0,
       opacity:  1,
-      duration: 0.825,
+      duration: dur(0.825),
       ease:     'power4.out',
-      stagger:  0.098,
-    }, '-=0.675');
+      stagger:  dur(0.098),
+    }, `-=${dur(0.675)}`);
 
     if (social) {
       tl.to(social, {
         opacity:  1,
         y:        0,
-        duration: 0.6,
+        duration: dur(0.6),
         ease:     'power3.out',
-      }, '-=0.225');
+      }, `-=${dur(0.225)}`);
     }
   };
 
@@ -189,20 +190,20 @@ export function initDrawerMenu({ onGoSection } = {}) {
       const idx = Number(raw);
       close();
       if (Number.isFinite(idx)) {
-        window.setTimeout(() => onGoSection?.(idx), 720);
+        window.setTimeout(() => onGoSection?.(idx), durMs(720));
       }
     });
   });
 
   drawer.querySelectorAll('.drawer__social-link').forEach((a) => {
     a.addEventListener('click', () => {
-      window.setTimeout(() => close(), 80);
+      window.setTimeout(() => close(), durMs(80));
     });
   });
 
   drawer.querySelectorAll('.drawer__contact a').forEach((a) => {
     a.addEventListener('click', () => {
-      window.setTimeout(() => close(), 80);
+      window.setTimeout(() => close(), durMs(80));
     });
   });
 

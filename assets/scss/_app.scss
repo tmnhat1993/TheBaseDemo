@@ -22,7 +22,7 @@ body {
   flex-direction: column;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.34s ease;
 
   &.is-ready {
     opacity: 1;
@@ -219,9 +219,9 @@ body {
   background: $c-green;
   cursor: pointer;
   transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    transform 0.2s ease;
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.17s ease;
   -webkit-tap-highlight-color: transparent;
 
   &:hover {
@@ -402,7 +402,7 @@ body {
   pointer-events: auto;
   color: $c-green;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.35s $ease-expo, opacity 0.25s ease;
+  transition: transform 0.3s $ease-expo, opacity 0.21s ease;
 
   &:hover {
     color: sc.adjust($c-green, $lightness: -6%);

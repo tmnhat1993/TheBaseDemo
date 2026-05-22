@@ -1,4 +1,5 @@
 import gsap from 'gsap';
+import { dur } from './motion.js';
 import { BRANDS, SHARED_ADDRESS, SHARED_PHONE, SHARED_PHONE_TEL } from './brandContent.js';
 
 export class BrandPopup {
@@ -110,7 +111,7 @@ export class BrandPopup {
     gsap.timeline()
       .to(this.#overlay, {
         opacity: 1,
-        duration: 0.6,
+        duration: dur(0.6),
         ease: 'power3.out',
       }, 0)
       .fromTo(this.#panel, {
@@ -119,9 +120,9 @@ export class BrandPopup {
       }, {
         opacity: 1,
         y: 0,
-        duration: 0.975,
+        duration: dur(0.975),
         ease: 'power4.out',
-      }, '-=0.225');
+      }, `-=${dur(0.225)}`);
 
     this.#closeBtn?.focus();
   }
@@ -141,12 +142,12 @@ export class BrandPopup {
       .to(this.#panel, {
         opacity: 0,
         y: -16,
-        duration: 0.525,
+        duration: dur(0.525),
         ease: 'power3.in',
       }, 0)
       .to(this.#overlay, {
         opacity: 0,
-        duration: 0.6,
+        duration: dur(0.6),
         ease: 'power3.in',
       }, 0);
   }

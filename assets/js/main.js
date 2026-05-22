@@ -7,11 +7,12 @@ import { initDrawerMenu } from './DrawerMenu.js';
 import { Popup } from './Popup.js';
 import { BrandPopup } from './BrandPopup.js';
 import { BRANDS } from './brandContent.js';
+import { dur, durMs } from './motion.js';
 
 const SECTION_COUNT = 3;
 const WHEEL_THRESHOLD = 55;
-const SECTION_LOCK_MS = 3200;
-const GALLERY_SLIDE_INTERVAL_MS = 5200;
+const SECTION_LOCK_MS = durMs(3200);
+const GALLERY_SLIDE_INTERVAL_MS = durMs(5200);
 function applyBrandIntroCopy() {
   document.querySelectorAll('[data-section-pane]').forEach((pane, idx) => {
     const wrap = pane.querySelector('.site-intro__text-wrap');
@@ -46,13 +47,13 @@ function initChrome({ goHome, enterSection }) {
   const openAboutModal = () => {
     const drawerWasOpen = drawerEl?.classList.contains('is-open');
     drawer.close();
-    window.setTimeout(() => aboutPopup.open(), drawerWasOpen ? 630 : 0);
+    window.setTimeout(() => aboutPopup.open(), drawerWasOpen ? durMs(630) : 0);
   };
 
   const openBrandModal = (index) => {
     const drawerWasOpen = drawerEl?.classList.contains('is-open');
     drawer.close();
-    window.setTimeout(() => brandPopup.open(index), drawerWasOpen ? 630 : 0);
+    window.setTimeout(() => brandPopup.open(index), drawerWasOpen ? durMs(630) : 0);
   };
 
   document.getElementById('btn-about')?.addEventListener('click', () => {
@@ -156,7 +157,7 @@ class SectionExperience {
     gsap.set(this.#hub, { visibility: 'visible', pointerEvents: 'auto' });
 
     if (animate) {
-      gsap.fromTo(this.#hub, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.55, ease: 'power3.out' });
+      gsap.fromTo(this.#hub, { autoAlpha: 0 }, { autoAlpha: 1, duration: dur(0.55), ease: 'power3.out' });
     } else {
       gsap.set(this.#hub, { autoAlpha: 1 });
     }
@@ -212,7 +213,7 @@ class SectionExperience {
     if (animate) {
       tl.to(this.#hub, {
         autoAlpha: 0,
-        duration: 0.4,
+        duration: dur(0.4),
         ease: 'power2.in',
         onComplete: () => {
           gsap.set(this.#hub, { visibility: 'hidden', pointerEvents: 'none' });
@@ -221,7 +222,7 @@ class SectionExperience {
 
       if (this.#experience) {
         gsap.set(this.#experience, { autoAlpha: 0 });
-        tl.to(this.#experience, { autoAlpha: 1, duration: 0.5, ease: 'power3.out' }, 0.12);
+        tl.to(this.#experience, { autoAlpha: 1, duration: dur(0.5), ease: 'power3.out' }, dur(0.12));
       }
 
       if (lines.length) {
@@ -229,14 +230,14 @@ class SectionExperience {
         tl.fromTo(
           lines,
           { autoAlpha: 0, y: 28 },
-          { autoAlpha: 1, y: 0, duration: 1.1, stagger: 0.35, ease: 'power3.out' },
-          0.35,
+          { autoAlpha: 1, y: 0, duration: dur(1.1), stagger: dur(0.35), ease: 'power3.out' },
+          dur(0.35),
         );
       }
 
       if (stack) {
         gsap.set(stack, { autoAlpha: 0 });
-        tl.to(stack, { autoAlpha: 1, duration: 1, ease: 'power3.out' }, 0.28);
+        tl.to(stack, { autoAlpha: 1, duration: dur(1), ease: 'power3.out' }, dur(0.28));
       }
     } else {
       gsap.set(this.#hub, { autoAlpha: 0, visibility: 'hidden', pointerEvents: 'none' });
@@ -332,7 +333,7 @@ class SectionExperience {
         gsap.fromTo(
           plate,
           { scale: 1 },
-          { scale: 0.9, duration: 0.09, yoyo: true, repeat: 1, ease: 'power2.out' },
+          { scale: 0.9, duration: dur(0.09), yoyo: true, repeat: 1, ease: 'power2.out' },
         );
       }
 
@@ -378,7 +379,7 @@ class SectionExperience {
     if (prevPane && nextPane) {
       gsap.killTweensOf([prevPane, nextPane, ...prevLines, ...nextLines]);
 
-      const fadeOut = 0.48;
+      const fadeOut = dur(0.48);
       const revealAt = fadeOut;
 
       gsap.set(prevPane, { zIndex: 3, y: 0 });
@@ -390,7 +391,7 @@ class SectionExperience {
       tl.fromTo(
         nextLines,
         { autoAlpha: 0, y: 36 },
-        { autoAlpha: 1, y: 0, duration: 1.25, stagger: 0.42, ease: 'power3.out' },
+        { autoAlpha: 1, y: 0, duration: dur(1.25), stagger: dur(0.42), ease: 'power3.out' },
         revealAt,
       );
     }
@@ -399,13 +400,13 @@ class SectionExperience {
     const nextStack = this.stacks[i];
     if (prevStack && nextStack) {
       gsap.killTweensOf([prevStack, nextStack]);
-      const fadeOut = 0.48;
+      const fadeOut = dur(0.48);
       const revealAt = fadeOut;
       tl.to(prevStack, { autoAlpha: 0, pointerEvents: 'none', duration: fadeOut, ease: 'power2.out' }, 0);
       tl.fromTo(
         nextStack,
         { autoAlpha: 0, pointerEvents: 'none' },
-        { autoAlpha: 1, pointerEvents: 'auto', duration: 1.2, ease: 'power3.out' },
+        { autoAlpha: 1, pointerEvents: 'auto', duration: dur(1.2), ease: 'power3.out' },
         revealAt,
       );
     }
@@ -543,12 +544,12 @@ class SectionExperience {
         });
       },
     })
-      .to(outgoing, { autoAlpha: 0, scale: 0.97, duration: 0.72, ease: 'power2.inOut' }, 0)
+      .to(outgoing, { autoAlpha: 0, scale: 0.97, duration: dur(0.72), ease: 'power2.inOut' }, 0)
       .fromTo(
         incoming,
         { autoAlpha: 0, scale: 1.06 },
-        { autoAlpha: 1, scale: 1, duration: 0.88, ease: 'power3.out' },
-        0.1,
+        { autoAlpha: 1, scale: 1, duration: dur(0.88), ease: 'power3.out' },
+        dur(0.1),
       );
   }
 

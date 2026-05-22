@@ -5,7 +5,8 @@ import gsap from 'gsap';
  * Intro xong → chờ → slide ẩn.
  */
 const LOADER_DEBUG_STAY_VISIBLE = false;
-const LOADER_POST_INTRO_DELAY_S = 1.5;
+const LOADER_POST_INTRO_DELAY_S = 1.125;
+const LOADER_SPEED = 0.75;
 
 const LOADER_TAGLINE =
   'COME FOR A SIP — STAY FOR THE VIBE';
@@ -134,7 +135,7 @@ export class Loader {
         {
           strokeDashoffset: 0,
           opacity:          1,
-          duration:         1.92,
+          duration:         1.92 * LOADER_SPEED,
           ease:             'power2.inOut',
         },
         0,
@@ -142,10 +143,10 @@ export class Loader {
       if (fill) {
         tl.to(
           fill,
-          { opacity: 1, duration: 0.48, ease: 'power3.out' },
-          '-=0.39',
+          { opacity: 1, duration: 0.48 * LOADER_SPEED, ease: 'power3.out' },
+          `-=${0.39 * LOADER_SPEED}`,
         );
-        tl.to(stroke, { opacity: 0, duration: 0.33, ease: 'power2.out' }, '<0.08');
+        tl.to(stroke, { opacity: 0, duration: 0.33 * LOADER_SPEED, ease: 'power2.out' }, `<${0.08 * LOADER_SPEED}`);
       }
     }
 
@@ -162,10 +163,10 @@ export class Loader {
           opacity:  1,
           y:        0,
           scale:    1,
-          duration: 1.575,
+          duration: 1.575 * LOADER_SPEED,
           ease:     'power4.out',
         },
-        stroke ? '+=0.12' : 0,
+        stroke ? `+=${0.12 * LOADER_SPEED}` : 0,
       );
     }
 
@@ -178,15 +179,15 @@ export class Loader {
           y:         0,
           x:         0,
           rotation:  0,
-          duration:  0.78,
+          duration:  0.78 * LOADER_SPEED,
           stagger:   {
-            each:       0.042,
+            each:       0.042 * LOADER_SPEED,
             from:       'center',
             ease:       'power2.out',
           },
           ease:      'power3.out',
         },
-        '-=0.93',
+        `-=${0.93 * LOADER_SPEED}`,
       );
     }
 
@@ -196,20 +197,20 @@ export class Loader {
         {
           scaleX:          1,
           transformOrigin: 'center center',
-          duration:        1.08,
+          duration:        1.08 * LOADER_SPEED,
           ease:            'power4.out',
         },
-        '-=0.525',
+        `-=${0.525 * LOADER_SPEED}`,
       );
     }
 
-    tl.to({}, { duration: 0.72 });
+    tl.to({}, { duration: 0.72 * LOADER_SPEED });
   }
 
   #hide() {
     gsap.to(this.#el, {
       yPercent:   -100,
-      duration:   1.725,
+      duration:   1.725 * LOADER_SPEED,
       ease:       'power3.inOut',
       onComplete: () => {
         this.#el.style.display = 'none';

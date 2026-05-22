@@ -471,6 +471,30 @@ body {
   line-height: 1.05;
 }
 
+// —— ≤1440px: logo nhỏ hơn ~15%, mô tả 16px, mũi tên gallery mờ hơn
+@media (max-width: 1440px) {
+  .site-intro__title img {
+    width: clamp(10.625rem, 40.8vw, 18.7rem);
+  }
+
+  .site-intro__text {
+    font-size: 16px;
+  }
+
+  .site-gallery__arrow {
+    opacity: 0.5;
+
+    &:hover:not(:disabled),
+    &:focus-visible:not(:disabled) {
+      opacity: 1;
+    }
+
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+}
+
 // —— Mobile: text trên (60vh, full width), gallery dưới; ẩn label + đoạn mô tả
 @media (max-width: 768px) {
   .logo {
@@ -527,10 +551,10 @@ body {
     padding-right: 1.5vw;
 
     img {
-      width: 50vw;
-      max-width: 50vw;
+      width: 42.5vw;
+      max-width: 42.5vw;
       height: auto;
-      max-height: min(26vh, 9.5rem);
+      max-height: min(26vh, 8.075rem);
       margin-inline: auto;
       object-fit: contain;
     }

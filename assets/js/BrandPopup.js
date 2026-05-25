@@ -45,7 +45,7 @@ export class BrandPopup {
     });
   }
 
-  #buildMetaRow(label, value, href) {
+  #buildMetaRow(label, value, href, external = false) {
     const row = document.createElement('div');
     row.className = 'popup__meta-item';
 
@@ -58,6 +58,10 @@ export class BrandPopup {
       link.className = 'popup__meta-value popup__meta-link';
       link.href = href;
       link.textContent = value;
+      if (external) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
       row.append(labelEl, link);
     } else {
       const val = document.createElement('span');
@@ -88,13 +92,23 @@ export class BrandPopup {
     );
 
     const metaItems = [
-      { label: 'Địa chỉ', value: SHARED_ADDRESS, href: null },
-      { label: 'Điện thoại', value: SHARED_PHONE, href: `tel:${SHARED_PHONE_TEL}` },
-      ...brand.hours.map((h) => ({ label: h.label, value: h.value, href: null })),
+      { label: 'Địa chỉ', value: SHARED_ADDRESS, href: null, external: false },
+      ...(brand.maps
+        ? [{
+            label: brand.maps.label,
+            value: 'Xem trên Google Maps',
+            href: brand.maps.url,
+            external: true,
+          }]
+        : []),
+      { label: 'Điện thoại', value: SHARED_PHONE, href: `tel:${SHARED_PHONE_TEL}`, external: false },
+      ...brand.hours.map((h) => ({ label: h.label, value: h.value, href: null, external: false })),
     ];
 
     this.#metaRoot.replaceChildren(
-      ...metaItems.map(({ label, value, href }) => this.#buildMetaRow(label, value, href)),
+      ...metaItems.map(({ label, value, href, external }) =>
+        this.#buildMetaRow(label, value, href, external),
+      ),
     );
   }
 

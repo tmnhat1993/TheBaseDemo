@@ -42,6 +42,10 @@ export const BRANDS = [
       { label: 'Check out', value: '12:00' },
       { label: 'Check in', value: '14:00' },
     ],
+    maps: {
+      label: 'Địa chỉ Google Maps Homestay',
+      url: 'https://maps.app.goo.gl/2yZuydTJmawXuyg8A',
+    },
   },
   {
     logo: logoFizz,
@@ -56,5 +60,9 @@ export const BRANDS = [
       'Không gian mang tinh thần hiện đại, gần gũi và có chiều sâu giúp THE.Fizz trở thành điểm hẹn nightlife đặc trưng trong hệ sinh thái THE.Base — nơi mỗi trải nghiệm đều được kết nối bằng cảm xúc và sự tận hưởng trọn vẹn.',
     ],
     hours: [{ label: 'Giờ mở cửa', value: '20:00 — 23:00 hàng ngày' }],
+    maps: {
+      label: 'Địa chỉ Google Maps The Fizz',
+      url: 'https://maps.app.goo.gl/sCfk4k7nAGgFVHrq8',
+    },
   },
 ];

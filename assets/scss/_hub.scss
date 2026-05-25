@@ -124,6 +124,53 @@
     &:active {
       transform: translateY(-2px);
     }
+
+    &--maintenance {
+      cursor: not-allowed;
+      pointer-events: none;
+
+      &::after {
+        display: none;
+      }
+
+      &:hover {
+        transform: none;
+        box-shadow:
+          0 1px 2px rgba($c-dark, 0.04),
+          0 8px 28px rgba($c-dark, 0.07);
+
+        .site-hub__card-media img {
+          transform: scale(1);
+        }
+      }
+
+      &:active {
+        transform: none;
+      }
+    }
+  }
+
+  &__card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba($c-white, 0.78);
+    pointer-events: none;
+  }
+
+  &__card-status {
+    margin: 0;
+    padding: 0.35rem 0.75rem;
+    font-family: $ff-display;
+    font-size: clamp(0.864rem, 1.92vw, 1.056rem);
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $c-green;
+    text-align: center;
   }
 
   &__card-media {

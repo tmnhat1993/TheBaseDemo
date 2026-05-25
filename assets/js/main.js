@@ -10,6 +10,8 @@ import { BRANDS } from './brandContent.js';
 import { dur, durMs } from './motion.js';
 
 const SECTION_COUNT = 3;
+const FIZZ_SECTION_INDEX = 2;
+const FIZZ_DISABLED = true;
 const WHEEL_THRESHOLD = 55;
 const SECTION_LOCK_MS = durMs(3200);
 const GALLERY_SLIDE_INTERVAL_MS = durMs(5200);
@@ -63,6 +65,7 @@ function initChrome({ goHome, enterSection }) {
   document.querySelectorAll('[data-open-brand]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const index = Number(btn.getAttribute('data-brand') ?? 0);
+      if (FIZZ_DISABLED && index === FIZZ_SECTION_INDEX) return;
       openBrandModal(index);
     });
   });
@@ -164,8 +167,18 @@ class SectionExperience {
 
   }
 
+  #maxSectionIndex() {
+    return FIZZ_DISABLED ? FIZZ_SECTION_INDEX - 1 : SECTION_COUNT - 1;
+  }
+
+  #isFizzSection(index) {
+    return FIZZ_DISABLED && index === FIZZ_SECTION_INDEX;
+  }
+
   enterSection(nextIndex, animate = true) {
-    const i = Math.max(0, Math.min(SECTION_COUNT - 1, nextIndex));
+    if (this.#isFizzSection(nextIndex)) return;
+
+    const i = Math.max(0, Math.min(this.#maxSectionIndex(), nextIndex));
 
     if (!this.#onHub) {
       this.goTo(i);
@@ -343,7 +356,7 @@ class SectionExperience {
   }
 
   next() {
-    if (this.#onHub || this.#index >= SECTION_COUNT - 1) return;
+    if (this.#onHub || this.#index >= this.#maxSectionIndex()) return;
     this.goTo(this.#index + 1);
   }
 
@@ -364,7 +377,9 @@ class SectionExperience {
   }
 
   goTo(nextIndex) {
-    const i = Math.max(0, Math.min(SECTION_COUNT - 1, nextIndex));
+    if (this.#isFizzSection(nextIndex)) return;
+
+    const i = Math.max(0, Math.min(this.#maxSectionIndex(), nextIndex));
     if (this.#onHub || i === this.#index) return;
 
     const prev = this.#index;

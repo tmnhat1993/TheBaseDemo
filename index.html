@@ -76,12 +76,14 @@
               <span class="drawer__name">The Home</span>
             </a>
           </li>
+          <!-- THE.Fizz — tạm ẩn (đang bảo trì)
           <li class="drawer__item">
             <a href="#" class="drawer__link" data-go="2">
               <span class="drawer__num">03</span>
               <span class="drawer__name">The Fizz</span>
             </a>
           </li>
+          -->
           <li class="drawer__item drawer__item--about">
             <button type="button" class="drawer__link" id="btn-about">
               <span class="drawer__num">—</span>
@@ -261,15 +263,24 @@
                 <img src="./assets/images/the-home-logo.png" alt="" width="140" height="48" decoding="async">
               </span>
             </button>
-            <button type="button" class="site-hub__card" data-enter-section="2"
-              aria-label="Vào THE.Fizz — Pub &amp; cocktail">
+            <div class="site-hub__card site-hub__card--maintenance" aria-disabled="true"
+              aria-label="THE.Fizz — Đang bảo trì">
               <span class="site-hub__card-media">
                 <img src="./assets/images/fizz-1.jpg" alt="" loading="lazy" decoding="async">
               </span>
               <span class="site-hub__card-brand">
                 <img src="./assets/images/the-fizz-logo.png" alt="" width="140" height="48" decoding="async">
               </span>
+              <span class="site-hub__card-overlay">
+                <span class="site-hub__card-status">Đang bảo trì</span>
+              </span>
+            </div>
+            <!-- Vào THE.Fizz (tạm tắt)
+            <button type="button" class="site-hub__card" data-enter-section="2"
+              aria-label="Vào THE.Fizz — Pub &amp; cocktail">
+              ...
             </button>
+            -->
           </div>
         </div>
       </section>
@@ -305,6 +316,7 @@
           </button>
         </article>
         <article class="site-intro__pane" data-section-pane="1">
+          <!-- Thang máy lên THE.Fizz — tạm ẩn (đang bảo trì)
           <div class="elevator-nav elevator-nav--top" role="presentation">
             <button type="button" class="elevator-btn elevator-btn--up" data-elevator-next
               aria-label="Đi lên tầng The Fizz">
@@ -317,6 +329,7 @@
               <span class="elevator-btn__label">The Fizz</span>
             </button>
           </div>
+          -->
           <div class="elevator-nav elevator-nav--bottom" role="presentation">
             <button type="button" class="elevator-btn elevator-btn--down" data-elevator-prev
               aria-label="Đi xuống tầng The Feine">
@@ -344,34 +357,17 @@
             Khám phá ngay
           </button>
         </article>
+        <!-- Section THE.Fizz — tạm ẩn (đang bảo trì)
         <article class="site-intro__pane" data-section-pane="2">
           <div class="elevator-nav elevator-nav--bottom" role="presentation">
             <button type="button" class="elevator-btn elevator-btn--down" data-elevator-prev
               aria-label="Đi xuống tầng The Home">
-              <span class="elevator-btn__plate" aria-hidden="true">
-                <svg class="elevator-btn__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </span>
-              <span class="elevator-btn__label">The Home</span>
+              ...
             </button>
           </div>
-          <p class="site-intro__label">Rooftop &amp; đêm thành phố</p>
-          <h2 class="site-intro__title">
-            <img src="./assets/images/the-fizz-logo.png" alt="THE.Fizz" width="360" height="120" decoding="async">
-          </h2>
-          <div class="site-intro__text-wrap">
-            <p class="site-intro__text">
-              Sân thượng, nhạc, ánh đèn và không khí party về đêm. THE.Fizz là mảnh ghép sống động nhất —
-              nơi Pleiku hiện lên theo một nhịp khác: rộn ràng, tự do và đầy năng lượng sau hoàng hôn.
-            </p>
-          </div>
-          <button type="button" class="site-intro__cta" data-open-brand data-brand="2"
-            aria-haspopup="dialog" aria-controls="popup-brand">
-            Khám phá ngay
-          </button>
+          ...
         </article>
+        -->
       </section>
 
       <section class="site-gallery" aria-label="Hình ảnh">
@@ -410,19 +406,11 @@
             </div>
           </div>
         </div>
+        <!-- Gallery THE.Fizz — tạm ẩn (đang bảo trì)
         <div class="site-gallery__stack site-gallery--fizz" data-section-gallery="2">
-          <div class="site-gallery__track" data-gallery-track>
-            <div class="site-gallery__slide">
-              <img src="./assets/images/fizz-1.jpg" alt="THE.Fizz — hình 1" loading="lazy" decoding="async">
-            </div>
-            <div class="site-gallery__slide">
-              <img src="./assets/images/fizz-2.jpg" alt="THE.Fizz — hình 2" loading="lazy" decoding="async">
-            </div>
-            <div class="site-gallery__slide">
-              <img src="./assets/images/fizz-3.jpg" alt="THE.Fizz — hình 3" loading="lazy" decoding="async">
-            </div>
-          </div>
+          ...
         </div>
+        -->
       </section>
       </div>
     </main>

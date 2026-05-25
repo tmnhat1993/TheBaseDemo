@@ -1,6 +1,7 @@
 import gsap from 'gsap';
 import { dur } from './motion.js';
 import { BRANDS, SHARED_ADDRESS, SHARED_PHONE, SHARED_PHONE_TEL } from './brandContent.js';
+import { POPUP_MAP_EMBED_FEINE } from './popupMap.js';
 
 export class BrandPopup {
   #popup;
@@ -11,6 +12,7 @@ export class BrandPopup {
   #logoImg;
   #textRoot;
   #metaRoot;
+  #mapIframe;
   #isOpen = false;
   #onGoHome;
 
@@ -24,6 +26,7 @@ export class BrandPopup {
     this.#logoImg = this.#popup?.querySelector('.popup__logo img') ?? null;
     this.#textRoot = this.#popup?.querySelector('[data-brand-text]') ?? null;
     this.#metaRoot = this.#popup?.querySelector('[data-brand-meta]') ?? null;
+    this.#mapIframe = this.#popup?.querySelector('.popup__map') ?? null;
   }
 
   init() {
@@ -80,6 +83,12 @@ export class BrandPopup {
     if (this.#logoImg) {
       this.#logoImg.src = brand.logo;
       this.#logoImg.alt = brand.logoAlt;
+    }
+
+    if (this.#mapIframe) {
+      const embed = brand.mapEmbed ?? { src: POPUP_MAP_EMBED_FEINE, title: 'THE.Feine trên Google Maps' };
+      this.#mapIframe.src = embed.src;
+      this.#mapIframe.title = embed.title;
     }
 
     this.#textRoot.replaceChildren(

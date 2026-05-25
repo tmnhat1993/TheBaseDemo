@@ -1,6 +1,7 @@
 import logoFeine from '../images/the-feine-logo.png?url';
 import logoHome from '../images/the-home-logo.png?url';
 import logoFizz from '../images/the-fizz-logo.png?url';
+import { POPUP_MAP_EMBED_FEINE, POPUP_MAP_EMBED_HOME, POPUP_MAP_EMBED_FIZZ } from './popupMap.js';
 
 export const HUB_INTRO =
   'THE.Base — Một mô hình kết hợp giữa café, homestay và pub, được tạo nên như một hệ sinh thái trải nghiệm nơi con người có thể gặp gỡ, nghỉ ngơi, kết nối và tận hưởng những khoảnh khắc đời thường theo cách nhẹ nhàng, tinh tế và đầy cảm hứng.';
@@ -25,6 +26,7 @@ export const BRANDS = [
       'Không gian mở, ánh sáng ấm và thiết kế tối giản giúp THE.Feine trở thành một điểm dừng nhẹ nhàng giữa nhịp sống Pleiku.',
     ],
     hours: [{ label: 'Giờ mở cửa', value: '07:00 — 21:00 hằng ngày' }],
+    mapEmbed: { src: POPUP_MAP_EMBED_FEINE, title: 'THE.Feine trên Google Maps' },
   },
   {
     logo: logoHome,
@@ -42,10 +44,7 @@ export const BRANDS = [
       { label: 'Check out', value: '12:00' },
       { label: 'Check in', value: '14:00' },
     ],
-    maps: {
-      label: 'Địa chỉ Google Maps Homestay',
-      url: 'https://maps.app.goo.gl/2yZuydTJmawXuyg8A',
-    },
+    mapEmbed: { src: POPUP_MAP_EMBED_HOME, title: 'THE.Home trên Google Maps' },
   },
   {
     logo: logoFizz,
@@ -60,6 +59,7 @@ export const BRANDS = [
       'Không gian mang tinh thần hiện đại, gần gũi và có chiều sâu giúp THE.Fizz trở thành điểm hẹn nightlife đặc trưng trong hệ sinh thái THE.Base — nơi mỗi trải nghiệm đều được kết nối bằng cảm xúc và sự tận hưởng trọn vẹn.',
     ],
     hours: [{ label: 'Giờ mở cửa', value: '20:00 — 23:00 hàng ngày' }],
+    mapEmbed: { src: POPUP_MAP_EMBED_FIZZ, title: 'THE.Fizz trên Google Maps' },
     maps: {
       label: 'Địa chỉ Google Maps The Fizz',
       url: 'https://maps.app.goo.gl/sCfk4k7nAGgFVHrq8',
